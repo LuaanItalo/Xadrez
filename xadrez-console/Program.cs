@@ -4,11 +4,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+       var tab = new Tabuleiro(8, 8);
 
-        Posicao P;
 
-        P = new Posicao(3, 4);
-
-        Console.WriteLine("POsição: " + P);
     }
 }
