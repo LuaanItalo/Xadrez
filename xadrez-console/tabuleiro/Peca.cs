@@ -11,12 +11,17 @@ namespace tabuleiro
         public int QteMovimentos { get; protected set; }
         public Tabuleiro tab { get; protected set; }
 
-        public Peca(Cor cor, Tabuleiro tab)
+        public Peca(Tabuleiro tab, Cor cor)
         {
             posicao = null;
             this.cor = cor;
-            tab = tab;
+            this.tab = tab;
             QteMovimentos = 0;
+        }
+
+        public void IncrementarQteMovimentos()
+        {
+            QteMovimentos++;
         }
     }
 }

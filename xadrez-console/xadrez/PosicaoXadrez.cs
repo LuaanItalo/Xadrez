@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using tabuleiro;
 
-namespace tabuleiro
+namespace xadrez
 {
     internal class PosicaoXadrez
     {
@@ -13,10 +13,10 @@ namespace tabuleiro
 
         public int linha { get; set; }
 
-        public PosicaoXadrez(char coluna, int linhs)
+        public PosicaoXadrez(char coluna, int linha)
         {
             this.coluna = coluna;
-            this.linha = linhs;
+            this.linha = linha;
         }
 
         public Posicao toPosicao()
