@@ -17,6 +17,13 @@ namespace xadrez_console
             Console.WriteLine();
             Console.WriteLine($"Turno: {partida.turno}");
             Console.WriteLine($"Vez da Jogada: Peça [{partida.jogadorAtual}] ");
+
+            if (partida.xeque)
+            {
+                Console.WriteLine("Xeque!");
+            }
+
+
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
@@ -48,7 +55,7 @@ namespace xadrez_console
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                        ImprimirPeca(tab.peca(i, j));
+                    ImprimirPeca(tab.peca(i, j));
                 }
                 Console.WriteLine();
 
@@ -69,7 +76,7 @@ namespace xadrez_console
                 {
                     if (posicoesPossiveis[i, j])
                     {
-                        Console.BackgroundColor = FundoAlterado ;
+                        Console.BackgroundColor = FundoAlterado;
                     }
                     else
                     {
@@ -117,7 +124,7 @@ namespace xadrez_console
                 Console.Write(" ");
             }
 
-            }
+        }
 
 
     }
