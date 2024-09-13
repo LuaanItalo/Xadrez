@@ -2,56 +2,45 @@
 using tabuleiro;
 using xadrez;
 
-namespace xadrez_console
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
+namespace xadrez_console {
+    class Program {
+        static void Main(string[] args) {
 
-            try
-            {
+            try {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                while (!partida.terminada)
-                {
-                    try
-                    {
-                        Console.Clear();
+                while (!partida.terminada) {
 
-                        Tela.ImprimirPartida(partida);
+                    try {
+                        Console.Clear();
+                        Tela.imprimirPartida(partida);
 
                         Console.WriteLine();
                         Console.Write("Origem: ");
                         Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoDeOrigem(origem);
 
-                        bool[,] posicoesPossiveis = partida.tab.peca(origem).MovimentosPossiveis();
+                        bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
                         Console.Clear();
-                        Tela.ImprimirTabuleiro(partida.tab, posicoesPossiveis);
+                        Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
                         Console.WriteLine();
                         Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
-                        partida.ValidarPosicaoDeDestino(origem, destino);
+                        partida.validarPosicaoDeDestino(origem, destino);
 
-                        partida.RealizaJogada(origem, destino);
+                        partida.realizaJogada(origem, destino);
                     }
-                    catch (TabuleiroException ex)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine(ex.Message);
-                        Console.WriteLine();
-                        Console.Write("Aperte 'Enter' e escolha novamente");
-                        Console.ReadKey();
+                    catch (TabuleiroException e) {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();
                     }
                 }
                 Console.Clear();
-                Tela.ImprimirPartida(partida);
+                Tela.imprimirPartida(partida);
             }
-            catch (TabuleiroException e)
-            {
+            catch (TabuleiroException e) {
                 Console.WriteLine(e.Message);
             }
 

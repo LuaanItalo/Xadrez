@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace tabuleiro
-{
-    internal class TabuleiroException : Exception
-    {
+namespace tabuleiro {
+    class TabuleiroException : Exception {
 
-        public TabuleiroException(string message) : base(message) { }
+        public TabuleiroException(string msg) : base(msg) {
+        }
     }
 }
