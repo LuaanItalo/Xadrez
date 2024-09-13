@@ -2,20 +2,23 @@
 
 namespace xadrez
 {
-    internal class Rei : Peca
+
+    class Cavalo : Peca
     {
-        public Rei( Tabuleiro tab, Cor cor) : base(tab, cor)
+
+        public Cavalo(Tabuleiro tab, Cor cor) : base(tab, cor)
         {
         }
 
         public override string ToString()
         {
-            return "R";
+            return "C";
         }
+
         private bool PodeMover(Posicao pos)
         {
             Peca p = tab.peca(pos);
-            return p == null || p.cor != this.cor;
+            return p == null || p.cor != cor;
         }
 
         public override bool[,] MovimentosPossiveis()
@@ -24,60 +27,48 @@ namespace xadrez
 
             Posicao pos = new Posicao(0, 0);
 
-            //Acima
-            pos.DefinirPosicao(posicao.Linha - 1, posicao.Coluna);
+            pos.DefinirPosicao(posicao.Linha - 1, posicao.Coluna - 2);
             if (tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
+            }
+            pos.DefinirPosicao(posicao.Linha - 2, posicao.Coluna - 1);
+            if (tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+            pos.DefinirPosicao(posicao.Linha - 2, posicao.Coluna + 1);
+            if (tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+            pos.DefinirPosicao(posicao.Linha - 1, posicao.Coluna + 2);
+            if (tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+            pos.DefinirPosicao(posicao.Linha + 1, posicao.Coluna + 2);
+            if (tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+            pos.DefinirPosicao(posicao.Linha + 2, posicao.Coluna + 1);
+            if (tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+            pos.DefinirPosicao(posicao.Linha + 2, posicao.Coluna - 1);
+            if (tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+            pos.DefinirPosicao(posicao.Linha + 1, posicao.Coluna - 2);
+            if (tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
 
-            }
-            //Nordeste
-            pos.DefinirPosicao(posicao.Linha - 1, posicao.Coluna + 1);
-            if (tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            // Direita
-            pos.DefinirPosicao(posicao.Linha, posicao.Coluna + 1);
-            if (tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            // Sudeste
-            pos.DefinirPosicao(posicao.Linha + 1, posicao.Coluna + 1);
-            if (tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //Abaixo
-            pos.DefinirPosicao(posicao.Linha + 1, posicao.Coluna);
-            if (tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //Sudoeste
-            pos.DefinirPosicao(posicao.Linha + 1, posicao.Coluna - 1);
-            if (tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //Esquerda
-            pos.DefinirPosicao(posicao.Linha, posicao.Coluna - 1);
-            if (tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //Noroeste
-            pos.DefinirPosicao(posicao.Linha - 1, posicao.Coluna - 1);
-            if (tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
             return mat;
-
-
-
-
         }
     }
 }

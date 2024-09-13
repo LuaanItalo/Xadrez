@@ -1,7 +1,4 @@
 ﻿
-using tabuleiro;
-
-
 namespace tabuleiro
 {
     abstract class Peca
@@ -14,13 +11,11 @@ namespace tabuleiro
         public Peca(Tabuleiro tab, Cor cor)
         {
             posicao = null;
-            this.cor = cor;
             this.tab = tab;
+            this.cor = cor;
             QteMovimentos = 0;
         }
 
-
-        public abstract bool[,] movimentosPossiveis();
 
         public void IncrementarQteMovimentos()
         {
@@ -33,10 +28,10 @@ namespace tabuleiro
         }
 
 
-        public  bool existeMovinentosPossiveis()
+        public  bool ExisteMovinentosPossiveis()
         {
 
-            bool[,] mat = movimentosPossiveis();
+            bool[,] mat = MovimentosPossiveis();
 
              for (int i = 0; i<tab.Linhas; i++)
              {
@@ -47,12 +42,15 @@ namespace tabuleiro
                         return true;
                     }
                 }
-             }return false;
+             }
+             return false;
         }
 
         public bool MovimentoPossivel(Posicao pos)
         {
-            return movimentosPossiveis()[pos.Linha, pos.Coluna];
+            return MovimentosPossiveis()[pos.Linha, pos.Coluna];
         }
+
+        public abstract bool[,] MovimentosPossiveis();
     }
 }

@@ -1,8 +1,6 @@
-﻿using System.Linq.Expressions;
+﻿using System;
 using tabuleiro;
 using xadrez;
-
-
 
 namespace xadrez_console
 {
@@ -10,33 +8,35 @@ namespace xadrez_console
     {
         private static void Main(string[] args)
         {
-            
+
             try
             {
-                PartidaDeXadrez partida = new PartidaDeXadrez();    
-                
-                while(!partida.terminada)
+                PartidaDeXadrez partida = new PartidaDeXadrez();
+
+                while (!partida.terminada)
                 {
                     try
                     {
                         Console.Clear();
 
                         Tela.ImprimirPartida(partida);
-                       
+
                         Console.WriteLine();
                         Console.Write("Origem: ");
                         Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoDeOrigem(origem);
 
-                        bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                        bool[,] posicoesPossiveis = partida.tab.peca(origem).MovimentosPossiveis();
 
                         Console.Clear();
                         Tela.ImprimirTabuleiro(partida.tab, posicoesPossiveis);
+
                         Console.WriteLine();
                         Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
-                        partida.validarPosicaoDeDestino(origem, destino);   
-                        partida.realizaJogada(origem, destino);
+                        partida.ValidarPosicaoDeDestino(origem, destino);
+
+                        partida.RealizaJogada(origem, destino);
                     }
                     catch (TabuleiroException ex)
                     {
@@ -44,7 +44,7 @@ namespace xadrez_console
                         Console.WriteLine(ex.Message);
                         Console.WriteLine();
                         Console.Write("Aperte 'Enter' e escolha novamente");
-                        Console.ReadKey();  
+                        Console.ReadKey();
                     }
                 }
                 Console.Clear();
@@ -55,16 +55,7 @@ namespace xadrez_console
                 Console.WriteLine(e.Message);
             }
 
-            /*
-           PosicaoXadrez pos = new PosicaoXadrez('a', 1 );
-
-            Console.WriteLine(pos);
-
-            Console.WriteLine(pos.toPosicao());
-            */
-
-
-
+            Console.ReadLine();
         }
     }
 }
